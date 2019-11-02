@@ -1,0 +1,22 @@
+				TheClik
+
+1. 	Separar a tela Registo de salários em duas categorias (Salário Base e subsídios);
+2.	Não fixar as profissões (permitir o registo de profissões);
+3.	Férias - a data do fim deve ser automárica;
+4.	Férias - não permitir que as férias sejam atribuidas mais de duas vezes no mesmo ano, a não ser que não tenha ficado de férias durante todo período;
+5.	Faltas - o funcionário deve sofrer um desconto salarial de acordo com o número de faltas;
+6.	Faltas - ao marcar falta deve estar registado a data;
+7.	Subsídios - nem todos os funcionários possuem o mesmo subsídio;
+8.	Página inicial mais amigável para o utilizador final;
+9.	Nível de acesso - quando o assunto é sobre dinheiro nunca pode haver apenas um funcionário;
+10.	Pedido de Férias - o sistema deve ser capaz de pegar os dados sobre o ano de trabalho do funcionário automaticamente para a atribuição de acordo com o ano;
+11.	Tabela - Funcionários demitidos devem estar noutra tabela;
+12.	Tabela - Não colocar muitas colunas sem usar o scroll;
+13.	Demissão - ao demitir um funcionário devem ser informados os motivos;
+14.	Relatório - o relatório em PDF deve ser mais profissional;
+15.	Relatório - deve haver um relatório gráfico;
+16. 	Encontrar funcionários a partir de uma pesquisa e não por meio de uma ComboBox (dificuldades para encontrar um dado quando a ComboBox tem muitos elementos);
+.
+.
+.
+n		....
