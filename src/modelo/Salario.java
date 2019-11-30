@@ -5,18 +5,10 @@
  */
 package modelo;
 
-import controlo.CtrlSalario;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.swing.JOptionPane;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import util.NewHibernateUtil;
 
 /**
  * Classe responsável por armazenar os salários de acordo com o cargo
@@ -129,21 +121,7 @@ public class Salario{
         this.serrelheiro = serrelheiro;
     }
     
-    
-   // public Salario(){
-    //    salarioo();
-   // }
-//    
-//     public void salarioo() {
-//        CtrlSalario dao = new CtrlSalario();
-//
-//        //for (Funcionario func : listarFuncionario) {
-//       for (Salario sal : dao.salarioo("")) {
-//           
-//            System.out.println(sal);
-//
-//        }
-//    }
+
 
     @Override
     public String toString() {

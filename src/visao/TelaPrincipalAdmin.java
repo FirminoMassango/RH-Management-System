@@ -28,7 +28,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -46,7 +45,7 @@ import modelo.Salario;
  *
  * @author Firmino Massango
  */
-public final class TelaPrincipal extends javax.swing.JFrame {
+public final class TelaPrincipalAdmin extends javax.swing.JFrame {
 
     CardLayout cardLayout;
 
@@ -54,9 +53,10 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     /**
      * Construtor
      */
-    public TelaPrincipal() {
+    public TelaPrincipalAdmin() {
         initComponents();
 
+        dispose();
         //setIcon();
         cardLayout = (CardLayout) painelPrincipal.getLayout();
 
@@ -73,12 +73,12 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         listarFuncRegCB();
         listarFuncCB();
         listarFuncionarioEfectCB();
+        preencherComboConfirmacao();
         preencherLabel();
         cbFuncionarioReg.setEnabled(false);
         txtNUIT.setDocument(new Numeros());
 
     }
-    
     
      
       
@@ -98,23 +98,9 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         btnRelatorio = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnRegisto = new javax.swing.JButton();
         btnInicio = new javax.swing.JButton();
+        btnConfirmacao = new javax.swing.JButton();
         painelPrincipal = new javax.swing.JPanel();
-        painelDemitir = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        txtDemMotivos = new javax.swing.JTextArea();
-        btnConfirmarDemissao = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        cbFuncionariosPraDemissao = new javax.swing.JComboBox<>();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        lbDemCod = new javax.swing.JLabel();
-        lbDemNome = new javax.swing.JLabel();
-        lbDemBI = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
         painelFaltas = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         cbFuncionarioFalta = new javax.swing.JComboBox<>();
@@ -134,9 +120,11 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         cbFuncionario = new javax.swing.JComboBox<>();
         cbDias = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         obs = new javax.swing.JTextArea();
         dataInicio = new com.toedter.calendar.JDateChooser();
+        dataFim = new com.toedter.calendar.JDateChooser();
         btnConfirmarFerias = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         painelFuncionarios = new javax.swing.JPanel();
@@ -144,7 +132,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         lbNome = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
         lbNomeFunc = new javax.swing.JLabel();
         lbApelidoFunc = new javax.swing.JLabel();
         lbProfissaoFunc = new javax.swing.JLabel();
@@ -272,6 +259,22 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         lbFormacaoAd = new javax.swing.JLabel();
         lbTipoAdmissao = new javax.swing.JLabel();
         btnVoltarEfect = new javax.swing.JButton();
+        painelConfirmacao = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        btnConfConfirmarSal = new javax.swing.JButton();
+        lbConfCod = new javax.swing.JLabel();
+        lbConfNome = new javax.swing.JLabel();
+        lbConfProf = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        lbConfBI = new javax.swing.JLabel();
+        btnConfConfirmarDem = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        cbConfSalario = new javax.swing.JComboBox<>();
+        cbConfDemissao = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -285,7 +288,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("The Click");
+        setTitle("TheClick RH");
 
         jSplitPane1.setDividerSize(0);
 
@@ -328,18 +331,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/TheClik.png"))); // NOI18N
 
-        btnRegisto.setBackground(new java.awt.Color(0, 153, 255));
-        btnRegisto.setFont(new java.awt.Font("Clear Sans", 1, 14)); // NOI18N
-        btnRegisto.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegisto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/Registo.png"))); // NOI18N
-        btnRegisto.setText("REGISTO");
-        btnRegisto.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnRegisto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistoActionPerformed(evt);
-            }
-        });
-
         btnInicio.setBackground(new java.awt.Color(0, 153, 255));
         btnInicio.setFont(new java.awt.Font("Clear Sans", 1, 14)); // NOI18N
         btnInicio.setForeground(new java.awt.Color(255, 255, 255));
@@ -357,14 +348,23 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnConfirmacao.setBackground(new java.awt.Color(0, 153, 255));
+        btnConfirmacao.setFont(new java.awt.Font("Clear Sans", 1, 14)); // NOI18N
+        btnConfirmacao.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirmacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/conf1.png"))); // NOI18N
+        btnConfirmacao.setText("CONFIRMAÇÃO");
+        btnConfirmacao.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnConfirmacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmacaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelEsquerdoLayout = new javax.swing.GroupLayout(painelEsquerdo);
         painelEsquerdo.setLayout(painelEsquerdoLayout);
         painelEsquerdoLayout.setHorizontalGroup(
             painelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnRegisto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(painelEsquerdoLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,21 +373,24 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnConfirmacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         painelEsquerdoLayout.setVerticalGroup(
             painelEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelEsquerdoLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(76, 76, 76)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnRegisto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnConfirmacao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
@@ -395,127 +398,8 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(painelEsquerdo);
 
         painelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        painelPrincipal.setPreferredSize(new java.awt.Dimension(900, 666));
         painelPrincipal.setLayout(new java.awt.CardLayout());
-
-        painelDemitir.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtDemMotivos.setColumns(20);
-        txtDemMotivos.setRows(5);
-        jScrollPane6.setViewportView(txtDemMotivos);
-
-        btnConfirmarDemissao.setText("Confirmar");
-        btnConfirmarDemissao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmarDemissaoActionPerformed(evt);
-            }
-        });
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Sobre o funcionário"));
-
-        cbFuncionariosPraDemissao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
-        cbFuncionariosPraDemissao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbFuncionariosPraDemissaoActionPerformed(evt);
-            }
-        });
-
-        jLabel37.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-        jLabel37.setText("Funcionário:");
-
-        jLabel38.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-        jLabel38.setText("Apelido:");
-
-        jLabel39.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-        jLabel39.setText("Código:");
-
-        jLabel40.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-        jLabel40.setText("BI:");
-
-        lbDemCod.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-
-        lbDemNome.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-
-        lbDemBI.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(197, 197, 197)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbFuncionariosPraDemissao, 0, 215, Short.MAX_VALUE)
-                    .addComponent(lbDemCod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbDemNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbDemBI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(238, Short.MAX_VALUE))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbFuncionariosPraDemissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel37))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel39)
-                    .addComponent(lbDemCod, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
-                    .addComponent(lbDemNome, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel40)
-                    .addComponent(lbDemBI, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-        );
-
-        jLabel41.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-        jLabel41.setText("Motivos:");
-
-        javax.swing.GroupLayout painelDemitirLayout = new javax.swing.GroupLayout(painelDemitir);
-        painelDemitir.setLayout(painelDemitirLayout);
-        painelDemitirLayout.setHorizontalGroup(
-            painelDemitirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(painelDemitirLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnConfirmarDemissao)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDemitirLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel41)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        painelDemitirLayout.setVerticalGroup(
-            painelDemitirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelDemitirLayout.createSequentialGroup()
-                .addGroup(painelDemitirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelDemitirLayout.createSequentialGroup()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelDemitirLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel41)
-                        .addGap(90, 90, 90)))
-                .addComponent(btnConfirmarDemissao)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-
-        painelPrincipal.add(painelDemitir, "card12");
 
         painelFaltas.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -615,7 +499,9 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         painelFaltas.setLayout(painelFaltasLayout);
         painelFaltasLayout.setHorizontalGroup(
             painelFaltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(painelFaltasLayout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(painelFaltasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -636,16 +522,16 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(painelFaltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFaltasLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addGap(18, 101, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelFaltasLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addGroup(painelFaltasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltarFaltas)
                     .addComponent(btnConfirmarFalta))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         painelPrincipal.add(painelFaltas, "card2");
@@ -684,17 +570,22 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(198, 198, 198))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         jLabel5.setText("Início: ");
+
+        jLabel6.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        jLabel6.setText("Fim: ");
 
         obs.setColumns(20);
         obs.setRows(5);
         jScrollPane2.setViewportView(obs);
 
         dataInicio.setBackground(new java.awt.Color(255, 255, 255));
+
+        dataFim.setBackground(new java.awt.Color(255, 255, 255));
 
         btnConfirmarFerias.setText("Confirmar");
         btnConfirmarFerias.addActionListener(new java.awt.event.ActionListener() {
@@ -712,15 +603,19 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             painelFeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(painelFeriasLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(dataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addGroup(painelFeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGroup(painelFeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFeriasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConfirmarFerias)
@@ -730,18 +625,21 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             painelFeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFeriasLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addGroup(painelFeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFeriasLayout.createSequentialGroup()
                         .addGroup(painelFeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(dataInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 79, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addGroup(painelFeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(btnConfirmarFerias)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         painelPrincipal.add(painelFerias, "card3");
@@ -759,14 +657,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
         jLabel10.setText("Profissão: ");
-
-        jButton8.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-        jButton8.setText("Demitir");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
 
         lbNomeFunc.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
 
@@ -787,45 +677,47 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(100, 100, 100)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbApelidoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbNomeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbProfissaoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 410, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEfectividade, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(70, 70, 70)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbProfissaoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbApelidoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEfectividade, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(lbNomeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(37, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbNomeFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbNome))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbApelidoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(30, Short.MAX_VALUE)
-                        .addComponent(btnEfectividade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(jButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)))
-                .addGap(0, 41, Short.MAX_VALUE)
+                .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbProfissaoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)))
+                    .addComponent(lbNomeFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbNome, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(btnEfectividade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lbApelidoFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lbProfissaoFunc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         btnVoltarFuncionario.setText("Voltar");
@@ -834,8 +726,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 btnVoltarFuncionarioActionPerformed(evt);
             }
         });
-
-        jTabbedPane3.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
 
         jScrollPane3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -861,9 +751,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(tabelaFuncionario);
-        if (tabelaFuncionario.getColumnModel().getColumnCount() > 0) {
-            tabelaFuncionario.getColumnModel().getColumn(0).setPreferredWidth(4);
-        }
 
         jTabbedPane3.addTab("Funcionários Activos", jScrollPane3);
 
@@ -887,26 +774,27 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         painelFuncionarios.setLayout(painelFuncionariosLayout);
         painelFuncionariosLayout.setHorizontalGroup(
             painelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 977, Short.MAX_VALUE)
             .addGroup(painelFuncionariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFuncionariosLayout.createSequentialGroup()
+                    .addGroup(painelFuncionariosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnVoltarFuncionario)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTabbedPane3))
+                        .addGap(0, 904, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         painelFuncionariosLayout.setVerticalGroup(
             painelFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFuncionariosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnVoltarFuncionario)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         painelPrincipal.add(painelFuncionarios, "card4");
@@ -968,7 +856,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addGap(230, 230, 230)
                         .addComponent(cbFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -981,11 +869,11 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(lbSal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 296, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConf)
                     .addComponent(btnVoltar))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Salário", jPanel4);
@@ -1013,20 +901,20 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(315, Short.MAX_VALUE)
+                .addContainerGap(415, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chbSubFer)
                     .addComponent(chbSubDecimoTer))
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addContainerGap(426, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
+                .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(chbSubFer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(chbSubDecimoTer)
-                .addContainerGap(314, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Subsídios", jPanel5);
@@ -1070,7 +958,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         painelPerFerias.setLayout(painelPerFeriasLayout);
         painelPerFeriasLayout.setHorizontalGroup(
             painelPerFeriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 977, Short.MAX_VALUE)
             .addGroup(painelPerFeriasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton10)
@@ -1082,7 +970,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton10)
-                .addGap(0, 64, Short.MAX_VALUE))
+                .addGap(0, 83, Short.MAX_VALUE))
         );
 
         painelPrincipal.add(painelPerFerias, "card6");
@@ -1233,12 +1121,12 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelSalarioLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtCozinheiro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(txtCozinheiro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                             .addComponent(txtContabilista, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtGuarda, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFrentista, javax.swing.GroupLayout.Alignment.LEADING)
@@ -1246,18 +1134,18 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtMotorista)
                     .addComponent(txtSerrelheiro)
                     .addComponent(txtElectrecista))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtSubAlim, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtBonus, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
                         .addComponent(txtSubTransp)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1275,7 +1163,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         painelSalarioLayout.setVerticalGroup(
             painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSalarioLayout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel13)
@@ -1286,7 +1174,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                     .addGroup(painelSalarioLayout.createSequentialGroup()
                         .addComponent(txtContabilista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel14)
@@ -1295,7 +1183,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel22)
                         .addComponent(txtSubTransp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel29)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelSalarioLayout.createSequentialGroup()
                         .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1305,7 +1193,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtFrentista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addGroup(painelSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtGuarda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17))
@@ -1500,7 +1388,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
                     .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtNome)
                     .addComponent(txtNUIT)
@@ -1509,7 +1397,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtEmail)
                     .addComponent(dcIngresso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cbNvlAcademico, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1519,7 +1407,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel31))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtApelido)
@@ -1533,7 +1421,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(txtNumeroTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                                 .addComponent(dcFimContracto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(2, 2, 2)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1671,16 +1559,16 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(160, Short.MAX_VALUE)
+                .addContainerGap(260, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbDedicado)
                             .addComponent(rbCompetente)
                             .addComponent(jLabel25))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                         .addComponent(cbTipoAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(210, Short.MAX_VALUE))
+                        .addContainerGap(258, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbFlexivel)
@@ -1784,7 +1672,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(painelIniciooLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelIniciooLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelDemoFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 767, Short.MAX_VALUE)
+                    .addComponent(painelDemoFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 965, Short.MAX_VALUE)
                     .addComponent(jScrollPane8)
                     .addGroup(painelIniciooLayout.createSequentialGroup()
                         .addGroup(painelIniciooLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1813,7 +1701,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(maisFer)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         painelPrincipal.add(painelInicioo, "card9");
@@ -1877,28 +1765,28 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         painelRegistooLayout.setHorizontalGroup(
             painelRegistooLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelRegistooLayout.createSequentialGroup()
-                .addContainerGap(200, Short.MAX_VALUE)
+                .addContainerGap(265, Short.MAX_VALUE)
                 .addGroup(painelRegistooLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addGroup(painelRegistooLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRegFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDefSalario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         painelRegistooLayout.setVerticalGroup(
             painelRegistooLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRegistooLayout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
+                .addContainerGap(159, Short.MAX_VALUE)
                 .addGroup(painelRegistooLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnFaltas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                 .addGroup(painelRegistooLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDefSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         painelPrincipal.add(painelRegistoo, "card10");
@@ -1962,7 +1850,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
                 .addGroup(painelEfectividadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbCompetente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbDedicado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1970,7 +1858,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(lbFlexivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbFormacaoAd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbTipoAdmissao, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
             .addGroup(painelEfectividadeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelEfectividadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1981,38 +1869,185 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         painelEfectividadeLayout.setVerticalGroup(
             painelEfectividadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelEfectividadeLayout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addComponent(cbEfect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(painelEfectividadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(lbCompetente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(painelEfectividadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
                     .addComponent(lbDedicado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(painelEfectividadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
                     .addComponent(lbDisciplinado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(painelEfectividadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
                     .addComponent(lbFlexivel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(painelEfectividadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(lbFormacaoAd, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(painelEfectividadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
                     .addComponent(lbTipoAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(btnVoltarEfect)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         painelPrincipal.add(painelEfectividade, "card11");
+
+        painelConfirmacao.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Sobre o Funcionário"));
+
+        jLabel37.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+        jLabel37.setText("Nome:");
+
+        jLabel38.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+        jLabel38.setText("Profissão:");
+
+        jLabel39.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+        jLabel39.setText("Código:");
+
+        btnConfConfirmarSal.setText("Confirmar Salário");
+        btnConfConfirmarSal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfConfirmarSalActionPerformed(evt);
+            }
+        });
+
+        lbConfCod.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+
+        lbConfNome.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+
+        lbConfProf.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+
+        jLabel40.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+        jLabel40.setText("BI:");
+
+        lbConfBI.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+
+        btnConfConfirmarDem.setText("Confirmar Demissão");
+        btnConfConfirmarDem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfConfirmarDemActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel40, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(106, 106, 106)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lbConfCod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbConfProf, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                        .addComponent(lbConfBI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbConfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnConfConfirmarSal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConfConfirmarDem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel39)
+                    .addComponent(lbConfCod, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel37)
+                            .addComponent(lbConfNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConfConfirmarSal, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbConfProf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnConfConfirmarDem)))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel40)
+                    .addComponent(lbConfBI, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
+        );
+
+        jLabel42.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+        jLabel42.setText("Salário:");
+
+        jLabel45.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
+        jLabel45.setText("Demissão:");
+
+        cbConfSalario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        cbConfSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbConfSalarioActionPerformed(evt);
+            }
+        });
+
+        cbConfDemissao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        cbConfDemissao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbConfDemissaoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelConfirmacaoLayout = new javax.swing.GroupLayout(painelConfirmacao);
+        painelConfirmacao.setLayout(painelConfirmacaoLayout);
+        painelConfirmacaoLayout.setHorizontalGroup(
+            painelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelConfirmacaoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbConfDemissao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbConfSalario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(painelConfirmacaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        painelConfirmacaoLayout.setVerticalGroup(
+            painelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelConfirmacaoLayout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addGroup(painelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(cbConfSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(painelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel45)
+                    .addComponent(cbConfDemissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(89, Short.MAX_VALUE))
+        );
+
+        painelPrincipal.add(painelConfirmacao, "card12");
 
         jSplitPane1.setRightComponent(painelPrincipal);
 
@@ -2020,14 +2055,14 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1171, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 649, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(983, 659));
+        setSize(new java.awt.Dimension(1181, 659));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2038,31 +2073,15 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         
         btnInicio.setBackground(new Color(0, 153, 153));
         btnAgenda.setBackground(new Color(0, 153, 255));
-
-        btnRegisto.setBackground(new Color(0, 153, 255));
-
+        btnConfirmacao.setBackground(new Color(0, 153, 255));
         btnRelatorio.setBackground(new Color(0, 153, 255));
         
         listarFuncionarioDemo(CtrlFuncionario.getTodosDAOdecrescente());
         listarFeriasDemo(CtrlFerias.getTodosDAOdecrescente());
         listarFuncionario(CtrlFuncionario.getTodosDAO());
         listarFerias(CtrlFerias.getTodosDAO());
-
+        listarDemitidos(CtrlFuncionario.listarDemitidos(""));
     }//GEN-LAST:event_btnInicioActionPerformed
-
-    private void btnRegistoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistoActionPerformed
-
-        cardLayout.show(painelPrincipal, "card10");
-
-        btnInicio.setBackground(new Color(0, 153, 255));
-        btnRegisto.setBackground(new Color(0, 153, 153));
-
-        btnAgenda.setBackground(new Color(0, 153, 255));
-
-        btnRelatorio.setBackground(new Color(0, 153, 255));
-
-
-    }//GEN-LAST:event_btnRegistoActionPerformed
 
     private void btnAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendaActionPerformed
 
@@ -2070,11 +2089,8 @@ public final class TelaPrincipal extends javax.swing.JFrame {
          btnConfirmarFerias.setEnabled(false);
 
         btnInicio.setBackground(new Color(0, 153, 255));
-
-        btnRegisto.setBackground(new Color(0, 153, 255));
-
+        btnConfirmacao.setBackground(new Color(0, 153, 255));
         btnRelatorio.setBackground(new Color(0, 153, 255));
-
         btnAgenda.setBackground(new Color(0, 153, 153));
 
     }//GEN-LAST:event_btnAgendaActionPerformed
@@ -2141,7 +2157,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             document.add(tabela);
 
         } catch (DocumentException | FileNotFoundException ex) {
-            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipalAdmin.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             document.close();
         }
@@ -2159,11 +2175,8 @@ public final class TelaPrincipal extends javax.swing.JFrame {
 
         // cardLayout.show(painelPrincipal, "card8");
         btnInicio.setBackground(new Color(0, 153, 153));
-
         btnAgenda.setBackground(new Color(0, 153, 255));
-
-        btnRegisto.setBackground(new Color(0, 153, 255));
-
+        btnConfirmacao.setBackground(new Color(0, 153, 255));
         btnRelatorio.setBackground(new Color(0, 153, 255));
 
 
@@ -2174,16 +2187,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         cardLayout.show(painelPrincipal, "card10");
 
     }//GEN-LAST:event_btnVoltarFaltasActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        listarDemCB();    
-        cardLayout.show(painelPrincipal, "card12");
-        
-            
-            //remover();
-            
-        
-    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void btnConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfActionPerformed
         CtrlSalario daoSal = new CtrlSalario();
@@ -2218,7 +2221,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         funcionario.setFlexivel(func.getFlexivel());
         funcionario.setFormacaoAdequadaAoCargo(func.getFormacaoAdequadaAoCargo());
         funcionario.setTipoDeAdmissao(func.getTipoDeAdmissao());
-        funcionario.setNrFaltas(func.getNrFaltas());
 
         
         // Pegando dados da base de dados para o programa
@@ -2237,43 +2239,43 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         for (Salario sa : daoSal.salarioo("")) {
 
             if (func.getProfissao().equals("Contabilista")) {
-                //funcionario.setSalarioBase(sa.getContabilista());
-                funcionario.setConfSalario(sa.getContabilista());
+                funcionario.setSalarioBase(sa.getContabilista());
             }
             
 
             if (func.getProfissao().equals("Cozinheiro")) {
-                funcionario.setConfSalario(sa.getCozinheiro());
+                funcionario.setSalarioBase(sa.getCozinheiro());
             }
                 
             if (func.getProfissao().equals("Electricista")) {
-                funcionario.setConfSalario(sa.getElectricista());
+                funcionario.setSalarioBase(sa.getElectricista());
             }
                 
             
             if (func.getProfissao().equals("Frentista")) {
-                funcionario.setConfSalario(sa.getFrentista());
+                funcionario.setSalarioBase(sa.getFrentista());
             }
                     
+                    
             if (func.getProfissao().equals("Guarda")) {
-                funcionario.setConfSalario(sa.getGuarda());
+                funcionario.setSalarioBase(sa.getGuarda());
             }
                         
             if (func.getProfissao().equals("Mecânico")) {
-                funcionario.setConfSalario(sa.getMecanico());
+                funcionario.setSalarioBase(sa.getMecanico());
             }
                             
             if (func.getProfissao().equals("Motorista")) {
-                funcionario.setConfSalario(sa.getMotorista());
+                funcionario.setSalarioBase(sa.getMotorista());
             }
                                 
             if (func.getProfissao().equals("Serrelheiro")) {
-                funcionario.setConfSalario(sa.getSerrelheiro());
+                funcionario.setSalarioBase(sa.getSerrelheiro());
             }
 
         }
         
-        double funcionarioSal = Math.round(funcionario.getConfSalario() - (funcionario.getConfSalario()/22)*funcionario.getNrFaltas());
+        double funcionarioSal = funcionario.getSalarioBase();
         
        
             //Atribuindo salario base e subsídios
@@ -2283,9 +2285,8 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                              + remuneracao.getSubsidioDeAlimentacao()
                              + remuneracao.getSubsidioDeTransporte()
                              + remuneracao.getBonus();
-                             
         
-        funcionario.setConfSalario(salarioTotal);
+        funcionario.setSalarioBase(salarioTotal);
         
         }
         
@@ -2297,7 +2298,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                                  + remuneracao.getSubsidioDeTransporte()
                                  + remuneracao.getBonus();
             
-            funcionario.setConfSalario(salarioTotal);
+            funcionario.setSalarioBase(salarioTotal);
             
         }
         
@@ -2305,12 +2306,13 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         //Atribuindo o subsídio de férias
         if (chbSubFer.isSelected()){
             
-            funcionario.setConfSalario(2*funcionarioSal);
+            funcionario.setSalarioBase(2*funcionarioSal);
         }
         
         
-        lbSal.setText(String.valueOf(funcionario.getConfSalario()).format("%.2f", funcionario.getConfSalario()));
-        //funcionario.setConfSalario(funcionario.getConfSalario());
+        lbSal.setText(String.valueOf(funcionario.getSalarioBase()).format("%.2f", funcionario.getSalarioBase()));
+        
+        
         dao.Actualizar(funcionario);
     }//GEN-LAST:event_btnConfActionPerformed
 
@@ -2406,13 +2408,14 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        TelaPrincipal tela = new TelaPrincipal();
+        TelaPrincipalAdmin tela = new TelaPrincipalAdmin();
         int resposta = JOptionPane.showConfirmDialog(null, "Realmente deseja sair?", "Confirmar", JOptionPane.YES_NO_OPTION);
 
         if (resposta == JOptionPane.YES_OPTION) {
 
             new Login().setVisible(true);
-            dispose();
+                dispose();
+            
         } else {
             tela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         }
@@ -2508,33 +2511,17 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private void btnConfirmarFeriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarFeriasActionPerformed
         Ferias fer = new Ferias();
         CtrlFerias ctrlFerias = new CtrlFerias();
-        Calendar calendar = Calendar.getInstance();
 
         fer.setDataInicio(dataInicio.getDate());
-        calendar.setTime((Date)dataInicio.getDate());
-        
+        fer.setDataFim(dataFim.getDate());
         fer.setObservacoes(obs.getText());
-        
-        
 
-
-        switch (cbDias.getSelectedIndex()) {
-            case 1:
-                fer.setDiasDeFerias(12);
-                calendar.add(Calendar.DAY_OF_MONTH, fer.getDiasDeFerias());
-                fer.setDataFim(calendar.getTime());
-                
-                break;
-            case 2:
-                fer.setDiasDeFerias(24);
-                calendar.add(Calendar.DAY_OF_MONTH, fer.getDiasDeFerias());
-                fer.setDataFim(calendar.getTime());
-                break;
-            default:
-                fer.setDiasDeFerias(30);
-                calendar.add(Calendar.DAY_OF_MONTH, fer.getDiasDeFerias());
-                fer.setDataFim(calendar.getTime());
-                break;
+        if (cbDias.getSelectedItem().equals("Primeiro")) {
+            fer.setDiasDeFerias(12);
+        } else if (cbDias.getSelectedItem().equals("Segundo")) {
+            fer.setDiasDeFerias(24);
+        } else {
+            fer.setDiasDeFerias(30);
         }
 
         Funcionario func = (Funcionario) cbFuncionario.getSelectedItem();
@@ -2578,7 +2565,9 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         //camposRegisto();
         CtrlSalario daoSal = new CtrlSalario();
         CtrlFuncionario dao = new CtrlFuncionario();
+        Salario salario = new Salario();
         Funcionario func = new Funcionario();
+        Salario sal = new Salario();
 
         func.setNome(txtNome.getText());
         func.setApelido(txtApelido.getText());
@@ -2724,9 +2713,8 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         txtNumeroTelefone.setText("");
         txtInstit.setText("");
              
-        
         dao.gravarFuncionario(func);
-        listarFeriasDemo(CtrlFerias.getTodosDAOdecrescente());
+         listarFeriasDemo(CtrlFerias.getTodosDAOdecrescente());
     }//GEN-LAST:event_btnConfRegActionPerformed
 
     private void btnConfirmarFaltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarFaltaActionPerformed
@@ -2936,8 +2924,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void cbFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFuncActionPerformed
-        chbSubDecimoTer.setSelected(false);
-        chbSubFer.setSelected(false);
     }//GEN-LAST:event_cbFuncActionPerformed
 
     private void btnEditarSalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarSalActionPerformed
@@ -3032,24 +3018,41 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_chbSubDecimoTerActionPerformed
 
-    private void cbFuncionariosPraDemissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFuncionariosPraDemissaoActionPerformed
-        Funcionario func = (Funcionario) cbFuncionariosPraDemissao.getSelectedItem();
-        
-        lbDemCod.setText(String.valueOf(func.getId()));
-        lbDemNome.setText(String.valueOf(func.getApelido()));
-        lbDemBI.setText(String.valueOf(func.getBi()));
-                
-    }//GEN-LAST:event_cbFuncionariosPraDemissaoActionPerformed
+    private void btnConfirmacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacaoActionPerformed
+       cardLayout.show(painelPrincipal, "card12");
 
-    private void btnConfirmarDemissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarDemissaoActionPerformed
+        btnInicio.setBackground(new Color(0, 153, 255));
+
+        btnAgenda.setBackground(new Color(0, 153, 255));
+
+        btnConfirmacao.setBackground(new Color(0,153,153));
         
+        btnRelatorio.setBackground(new Color(0, 153, 255));
+        
+      
+        
+    }//GEN-LAST:event_btnConfirmacaoActionPerformed
+
+    private void cbConfSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbConfSalarioActionPerformed
+           
+        try {
+           Funcionario func = (Funcionario) cbConfSalario.getSelectedItem();
+        
+           lbConfCod.setText(String.valueOf(func.getId()));
+           lbConfNome.setText(String.valueOf(func.getNome()));
+           lbConfProf.setText(String.valueOf(func.getProfissao()));
+           lbConfBI.setText(String.valueOf(func.getBi()));
+        } catch (Exception e) {
+        }
+      
+       
+    }//GEN-LAST:event_cbConfSalarioActionPerformed
+
+    private void btnConfConfirmarSalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfConfirmarSalActionPerformed
         CtrlFuncionario dao = new CtrlFuncionario();
         Funcionario funcionario = new Funcionario();
-        
-        Funcionario func = (Funcionario) cbFuncionariosPraDemissao.getSelectedItem();
-        
-        funcionario.setConfEstado("inactivo");
-        funcionario.setConfMotivoDemissao(String.valueOf(txtDemMotivos.getText()));
+        Funcionario func = (Funcionario) cbConfSalario.getSelectedItem();
+        int indice = cbConfSalario.getSelectedIndex();
         
         funcionario.setId(func.getId());
         funcionario.setNome(func.getNome());
@@ -3067,6 +3070,58 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         funcionario.setNivelAcademico(func.getNivelAcademico());
         funcionario.setInstituicao(func.getInstituicao());
         funcionario.setEstado(func.getEstado());
+        funcionario.setNrFaltas(func.getNrFaltas());
+        
+        funcionario.setCompetente(func.getCompetente());
+        funcionario.setDedicado(func.getDedicado());
+        funcionario.setDisciplinado(func.getDisciplinado());
+        funcionario.setFlexivel(func.getFlexivel());
+        funcionario.setFormacaoAdequadaAoCargo(func.getFormacaoAdequadaAoCargo());
+        funcionario.setTipoDeAdmissao(func.getTipoDeAdmissao());
+        funcionario.setSalarioBase(func.getConfSalario());
+           
+        cbConfSalario.removeItemAt(indice);
+        dao.Actualizar(funcionario);
+        
+    }//GEN-LAST:event_btnConfConfirmarSalActionPerformed
+
+    private void cbConfDemissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbConfDemissaoActionPerformed
+              
+        try {
+           Funcionario func = (Funcionario) cbConfDemissao.getSelectedItem();
+           
+           lbConfCod.setText(String.valueOf(func.getId()));
+           lbConfNome.setText(String.valueOf(func.getNome()));
+           lbConfProf.setText(String.valueOf(func.getProfissao()));
+           lbConfBI.setText(String.valueOf(func.getBi()));
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_cbConfDemissaoActionPerformed
+
+    private void btnConfConfirmarDemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfConfirmarDemActionPerformed
+         CtrlFuncionario dao = new CtrlFuncionario();
+        Funcionario funcionario = new Funcionario();
+        Funcionario func = (Funcionario) cbConfDemissao.getSelectedItem();
+        
+        int indice = cbConfDemissao.getSelectedIndex();
+        
+        funcionario.setId(func.getId());
+        funcionario.setNome(func.getNome());
+        funcionario.setApelido(func.getApelido());
+        funcionario.setNuit(func.getNuit());
+        funcionario.setDataNascimento(func.getDataNascimento());
+        funcionario.setEndereco(func.getEndereco());
+        funcionario.setEmail(func.getEmail());
+        funcionario.setDataIngresso(func.getDataIngresso());
+        funcionario.setDataFimDoContracto(func.getDataFimDoContracto());
+        funcionario.setBi(func.getBi());
+        funcionario.setGenero(func.getGenero());
+        funcionario.setNumeroTelefone(func.getNumeroTelefone());
+        funcionario.setProfissao(func.getProfissao());
+        funcionario.setNivelAcademico(func.getNivelAcademico());
+        funcionario.setInstituicao(func.getInstituicao());
+        funcionario.setEstado(func.getEstado());
+        funcionario.setNrFaltas(func.getNrFaltas());
         
         funcionario.setCompetente(func.getCompetente());
         funcionario.setDedicado(func.getDedicado());
@@ -3075,10 +3130,16 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         funcionario.setFormacaoAdequadaAoCargo(func.getFormacaoAdequadaAoCargo());
         funcionario.setTipoDeAdmissao(func.getTipoDeAdmissao());
         funcionario.setSalarioBase(func.getSalarioBase());
+        funcionario.setEstado(func.getConfEstado());
+        funcionario.setMotivoDemissao(func.getConfMotivoDemissao());
+        funcionario.setConfEstado("");
+        funcionario.setConfMotivoDemissao("");
         
+        cbConfDemissao.removeItemAt(indice);
         dao.Actualizar(funcionario);
+
         
-    }//GEN-LAST:event_btnConfirmarDemissaoActionPerformed
+    }//GEN-LAST:event_btnConfConfirmarDemActionPerformed
 
     
     /**
@@ -3099,14 +3160,16 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -3115,7 +3178,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             public void run() {
 
                 
-                TelaPrincipal tela = new TelaPrincipal();
+                TelaPrincipalAdmin tela = new TelaPrincipalAdmin();
                 tela.setVisible(true);
 
                 tela.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -3140,9 +3203,11 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgenda;
     private javax.swing.JButton btnConf;
+    private javax.swing.JButton btnConfConfirmarDem;
+    private javax.swing.JButton btnConfConfirmarSal;
     private javax.swing.JButton btnConfReg;
+    private javax.swing.JButton btnConfirmacao;
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JButton btnConfirmarDemissao;
     private javax.swing.JButton btnConfirmarFalta;
     private javax.swing.JButton btnConfirmarFerias;
     private javax.swing.JButton btnDefSalario;
@@ -3151,7 +3216,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnFaltas;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnRegFunc;
-    private javax.swing.JButton btnRegisto;
     private javax.swing.JButton btnRelatorio;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalario;
@@ -3161,13 +3225,14 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnVoltarFaltas;
     private javax.swing.JButton btnVoltarFuncionario;
     private javax.swing.JButton btnVoltarReg;
+    private javax.swing.JComboBox<Object> cbConfDemissao;
+    private javax.swing.JComboBox<Object> cbConfSalario;
     private javax.swing.JComboBox<String> cbDias;
     private javax.swing.JComboBox<Object> cbEfect;
     private javax.swing.JComboBox<Object> cbFunc;
     private javax.swing.JComboBox<Object> cbFuncionario;
     private javax.swing.JComboBox<Object> cbFuncionarioFalta;
     private javax.swing.JComboBox<Object> cbFuncionarioReg;
-    private javax.swing.JComboBox<Object> cbFuncionariosPraDemissao;
     private javax.swing.JComboBox<String> cbGenero;
     private javax.swing.JComboBox<String> cbMotivo;
     private javax.swing.JComboBox<String> cbNvlAcademico;
@@ -3176,12 +3241,12 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JCheckBox chbFalta;
     private javax.swing.JCheckBox chbSubDecimoTer;
     private javax.swing.JCheckBox chbSubFer;
+    private com.toedter.calendar.JDateChooser dataFim;
     private com.toedter.calendar.JDateChooser dataInicio;
     private com.toedter.calendar.JDateChooser dcFimContracto;
     private com.toedter.calendar.JDateChooser dcIngresso;
     private com.toedter.calendar.JDateChooser dcNascimento;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3217,8 +3282,9 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
@@ -3231,6 +3297,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -3248,7 +3315,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -3256,10 +3322,11 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JLabel lbApelidoFunc;
     private javax.swing.JLabel lbCompetente;
+    private javax.swing.JLabel lbConfBI;
+    private javax.swing.JLabel lbConfCod;
+    private javax.swing.JLabel lbConfNome;
+    private javax.swing.JLabel lbConfProf;
     private javax.swing.JLabel lbDedicado;
-    private javax.swing.JLabel lbDemBI;
-    private javax.swing.JLabel lbDemCod;
-    private javax.swing.JLabel lbDemNome;
     private javax.swing.JLabel lbDisciplinado;
     private javax.swing.JLabel lbFlexivel;
     private javax.swing.JLabel lbFormacaoAd;
@@ -3273,7 +3340,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton maisFer;
     private javax.swing.JButton maisFunc;
     private javax.swing.JTextArea obs;
-    private javax.swing.JPanel painelDemitir;
+    private javax.swing.JPanel painelConfirmacao;
     private javax.swing.JScrollPane painelDemoFunc;
     private javax.swing.JPanel painelEfectividade;
     private javax.swing.JPanel painelEsquerdo;
@@ -3302,7 +3369,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtBonus;
     private javax.swing.JTextField txtContabilista;
     private javax.swing.JTextField txtCozinheiro;
-    private javax.swing.JTextArea txtDemMotivos;
     private javax.swing.JTextField txtElectrecista;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereco;
@@ -3362,35 +3428,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 func.getDataFimDoContracto(),
                 func.getNivelAcademico(),
                 func.getInstituicao()
-            });
-        }
-    }
-    
-    public void listarDemitidos(List<Funcionario> listarDemitidos) {
-
-        DefaultTableModel modelo = new DefaultTableModel();
-
-        this.tabelaDemitidos.setModel(modelo);
-
-        String colunas[] = {"Id", "Nome", "Apelido", "BI","Faltas","Salário","Género", "Telefone",
-             "Profissão","Motivos"};
-
-        for (String coluna : colunas) {
-            modelo.addColumn(coluna);
-        }
-
-        for (Funcionario func : listarDemitidos) {
-            modelo.addRow(new Object[]{
-                func.getId(),
-                func.getNome(),
-                func.getApelido(),
-                func.getBi(),
-                func.getNrFaltas(),
-                func.getSalarioBase(),
-                func.getGenero(),
-                func.getNumeroTelefone(),
-                func.getProfissao(),
-                func.getMotivoDemissao()
             });
         }
     }
@@ -3518,6 +3555,34 @@ public final class TelaPrincipal extends javax.swing.JFrame {
                 func.getProfissao()});
         }
     }
+    
+    public void listarDemitidos(List<Funcionario> listarDemitidos) {
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        this.tabelaDemitidos.setModel(modelo);
+
+        String colunas[] = {"Id", "Nome", "Apelido", "BI","Faltas","Salário","Género", "Telefone",
+             "Profissão"};
+
+        for (String coluna : colunas) {
+            modelo.addColumn(coluna);
+        }
+
+        for (Funcionario func : listarDemitidos) {
+            modelo.addRow(new Object[]{
+                func.getId(),
+                func.getNome(),
+                func.getApelido(),
+                func.getBi(),
+                func.getNrFaltas(),
+                func.getSalarioBase(),
+                func.getGenero(),
+                func.getNumeroTelefone(),
+                func.getProfissao()
+            });
+        }
+    }
 
     /**
      * Configuração do botão Início
@@ -3528,7 +3593,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
         cardLayout.show(painelPrincipal, "card9");
         btnInicio.setBackground(new Color(0, 153, 153));
         btnAgenda.setBackground(new Color(0, 153, 255));
-        btnRegisto.setBackground(new Color(0, 153, 255));
         btnRelatorio.setBackground(new Color(0, 153, 255));
     }
 
@@ -3584,6 +3648,29 @@ public final class TelaPrincipal extends javax.swing.JFrame {
 
     }
 
+    
+    public void listarConfSalarioCB() {
+
+        CtrlFuncionario dao = new CtrlFuncionario();
+
+       for (Funcionario func : dao.listarConfSalario("")) {
+           
+            cbConfSalario.addItem(func);
+           
+        }
+    }
+    
+    public void listarConfDemissaoCB() {
+
+        CtrlFuncionario dao = new CtrlFuncionario();
+
+       for (Funcionario func : dao.listarConfActivos("")) {
+           
+            cbConfDemissao.addItem(func);
+           
+        }
+    }
+    
     public void listarFuncionarioCB() {
 
         CtrlFuncionario dao = new CtrlFuncionario();
@@ -3633,16 +3720,6 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             cbFunc.addItem(func);
         }
     }
-       
-         public void listarDemCB() {
-        CtrlFuncionario dao = new CtrlFuncionario();
-
-        for (Funcionario func : dao.listarActivos("")) {
-
-            cbFuncionariosPraDemissao.addItem(func);
-        }
-    }
-       
             
     public void listarFuncRegCB() {
         CtrlFuncionario dao = new CtrlFuncionario();
@@ -3652,37 +3729,36 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             cbFuncionarioReg.addItem(func);
         }
     }
-            public void remover(){
-              
-        
+       public void remover() {
+
         //Verificando se a linha foi seleccionada
-           if (tabelaFuncionario.getSelectedRow() != -1) {
+        if (tabelaFuncionario.getSelectedRow() != -1) {
             Funcionario funcionario = new Funcionario();
             CtrlFuncionario dao = new CtrlFuncionario();
 
             //Pegando o ID
             String d = tabelaFuncionario.getValueAt(tabelaFuncionario.getSelectedRow(), 0).toString();
             funcionario.setId(Integer.parseInt(d));
-            
+
             int linha = tabelaFuncionario.getSelectedRow();
-                
-                funcionario.setNome((String) tabelaFuncionario.getValueAt(linha, 1));
-                funcionario.setApelido((String) tabelaFuncionario.getValueAt(linha, 2));
-                funcionario.setNuit((int) tabelaFuncionario.getValueAt(linha, 3));
-                funcionario.setBi((String) tabelaFuncionario.getValueAt(linha, 4));
-                funcionario.setNrFaltas((int) tabelaFuncionario.getValueAt(linha, 5));
-                funcionario.setSalarioBase((double) tabelaFuncionario.getValueAt(linha, 6));
-                funcionario.setDataNascimento((Date) tabelaFuncionario.getValueAt(linha, 7));
-                funcionario.setGenero((String) tabelaFuncionario.getValueAt(linha, 8));
-                funcionario.setEndereco((String) tabelaFuncionario.getValueAt(linha, 9));
-                funcionario.setNumeroTelefone((String) tabelaFuncionario.getValueAt(linha, 10));
-                funcionario.setEmail((String) tabelaFuncionario.getValueAt(linha, 11));
-                funcionario.setProfissao((String) tabelaFuncionario.getValueAt(linha, 12));
-                funcionario.setDataIngresso((Date) tabelaFuncionario.getValueAt(linha, 13));
-                funcionario.setDataFimDoContracto((Date) tabelaFuncionario.getValueAt(linha, 14));
-                funcionario.setNivelAcademico((String) tabelaFuncionario.getValueAt(linha, 15));
-                funcionario.setInstituicao((String) tabelaFuncionario.getValueAt(linha, 16));
-                funcionario.setEstado("inactivo");
+
+            funcionario.setNome((String) tabelaFuncionario.getValueAt(linha, 1));
+            funcionario.setApelido((String) tabelaFuncionario.getValueAt(linha, 2));
+            funcionario.setNuit((int) tabelaFuncionario.getValueAt(linha, 3));
+            funcionario.setBi((String) tabelaFuncionario.getValueAt(linha, 4));
+            funcionario.setNrFaltas((int) tabelaFuncionario.getValueAt(linha, 5));
+            funcionario.setSalarioBase((double) tabelaFuncionario.getValueAt(linha, 6));
+            funcionario.setDataNascimento((Date) tabelaFuncionario.getValueAt(linha, 7));
+            funcionario.setGenero((String) tabelaFuncionario.getValueAt(linha, 8));
+            funcionario.setEndereco((String) tabelaFuncionario.getValueAt(linha, 9));
+            funcionario.setNumeroTelefone((String) tabelaFuncionario.getValueAt(linha, 10));
+            funcionario.setEmail((String) tabelaFuncionario.getValueAt(linha, 11));
+            funcionario.setProfissao((String) tabelaFuncionario.getValueAt(linha, 12));
+            funcionario.setDataIngresso((Date) tabelaFuncionario.getValueAt(linha, 13));
+            funcionario.setDataFimDoContracto((Date) tabelaFuncionario.getValueAt(linha, 14));
+            funcionario.setNivelAcademico((String) tabelaFuncionario.getValueAt(linha, 15));
+            funcionario.setInstituicao((String) tabelaFuncionario.getValueAt(linha, 16));
+            funcionario.setEstado("inactivo");
 
             //JOptionPane
             int resposta = JOptionPane.showConfirmDialog(null, "Realmente deseja Eliminar o funcionário?", "Confirmar", JOptionPane.YES_NO_OPTION);
@@ -3692,9 +3768,9 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             if (resposta == JOptionPane.YES_OPTION) {
                 dao.removerFuncionario(funcionario);
 
-            //Caso a tecla NO seja seleccionada, nada será feito
+                //Caso a tecla NO seja seleccionada, nada será feito
             } else {
-                new TelaPrincipal().setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                new TelaPrincipalAdmin().setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             }
 
             listarFuncionarioActivo();
@@ -3703,9 +3779,23 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Selecione um Funcionário para poder Remover");
         }
-                
-            }
-            
+
+    }
+       
+    public void preencherComboConfirmacao() {
+        try {
+            listarConfSalarioCB();
+
+        } catch (Exception e) {
+
+        }
+
+        try {
+            listarConfDemissaoCB();
+        } catch (Exception e) {
+        }
+    }
+       
          public void preencherLabel() {
         // TODO add your handling code here:
         int linha = tabelaFuncionario.getSelectedRow();
@@ -3714,7 +3804,7 @@ public final class TelaPrincipal extends javax.swing.JFrame {
             
             lbNomeFunc.setText((String) tabelaFuncionario.getValueAt(linha, 1));
             lbApelidoFunc.setText((String) tabelaFuncionario.getValueAt(linha, 2));
-            lbProfissaoFunc.setText((String) tabelaFuncionario.getValueAt(linha, 12));
+            lbProfissaoFunc.setText((String) tabelaFuncionario.getValueAt(linha, 8));
         }
     }
 }

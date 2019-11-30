@@ -137,6 +137,50 @@ public class CtrlFuncionario {
                 return null;
         }
     }
+            
+               public List<Funcionario> listarConfActivos(String chave) {
+                SessionFactory sf = NewHibernateUtil.getSessionFactory();
+                Session sec = sf.openSession();
+
+                 Query c = sec.createQuery("from funcionario where confEstado = 'inactivo'");
+                 List<Funcionario> list = c.list();
+                 
+                    if (list.size() > 0) {
+                            return c.list();
+                    } else {
+                return null;
+        }
+    }
+            
+                public List<Funcionario> listarConfSalario(String chave) {
+                SessionFactory sf = NewHibernateUtil.getSessionFactory();
+                Session sec = sf.openSession();
+
+                 Query c = sec.createQuery("from funcionario where ConfSalario > 0.0");
+                 List<Funcionario> list = c.list();
+                 
+                    if (list.size() > 0) {
+                            return c.list();
+                    } else {
+                return null;
+        }
+    }
+            
+            
+             public static List<Funcionario> listarDemitidos(String chave) {
+                   SessionFactory sf = NewHibernateUtil.getSessionFactory();
+                   Session sec = sf.openSession();
+
+                   Query c = sec.createQuery("from funcionario where estado = 'inactivo'");
+                   List<Funcionario> list = c.list();
+
+                 if (list.size() > 0) {
+                    return c.list();
+                 } else {
+                   JOptionPane.showMessageDialog(null, "Não encontrado!");
+                 return null;
+                }
+        }
 
     /**
      * Método para a utilização dos métodos salvar ou actulizar da classe DAO Genérico quando necessário

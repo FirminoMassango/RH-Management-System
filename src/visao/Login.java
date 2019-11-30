@@ -10,6 +10,8 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Utilizadores;
@@ -18,10 +20,12 @@ import modelo.Utilizadores;
  *
  * @author whisfirm
  */
-public class Login extends javax.swing.JFrame {
+public final class Login extends javax.swing.JFrame {
 
-     Utilizadores utilizador = new Utilizadores();
         CtrlUser dao = new CtrlUser();
+        
+        List utilizadores = new ArrayList();
+            List senhas = new ArrayList();
     
     
     /**
@@ -39,53 +43,18 @@ public class Login extends javax.swing.JFrame {
         
     }
     
-    
-    
     public void inicializacao(){
         
+        
         for (Utilizadores usr : dao.listar("")) {
-            utilizador.setUser(usr.getUser());
-            utilizador.setSenha(usr.getSenha());
-        }
-    }
-    
-    public void verificacaoCredenciais(){
-        
-        if ((txtUser.getText().equals(utilizador.getUser())) && (txtSenha.getText().equals(utilizador.getSenha()))){
-            
-            new TelaPrincipal().setVisible(true);
-            dispose();
-            
-        }
-           
-        
-        else if ((txtUser.getText().equals(utilizador.getUser())) && (txtSenha.getText() != utilizador.getSenha())){
-            
-             txtSenha.setText("");
-             txtSenha.requestFocus();
-        }
-           
-        
-        else if ((txtUser.getText() != utilizador.getUser()) && (txtSenha.getText().equals(utilizador.getSenha()))){
-            txtUser.setText("");
-            txtUser.requestFocus();
-        }
-            
-        
-        else if ((txtUser.getText().equals("")) && (txtSenha.getText().equals(""))){
-            JOptionPane.showMessageDialog(null,"Campos vazios");
-            txtUser.requestFocus();
-        }
-        
-        else {
-            JOptionPane.showMessageDialog(null,"Nome de utilizador e senha incorrectos");
-            txtUser.setText("");
-            txtSenha.setText("");
-            txtUser.requestFocus();
-        }
-    }
-    
 
+            
+
+            utilizadores.add(usr.getUser());
+            senhas.add(usr.getSenha());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -99,7 +68,6 @@ public class Login extends javax.swing.JFrame {
         txtUser = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         btnConf = new javax.swing.JButton();
-        btnLimpar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,7 +102,7 @@ public class Login extends javax.swing.JFrame {
         txtSenha.setBounds(70, 230, 190, 27);
 
         btnConf.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-        btnConf.setText("Confirmar");
+        btnConf.setText("Entrar");
         btnConf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfActionPerformed(evt);
@@ -146,22 +114,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnConf);
-        btnConf.setBounds(74, 400, 100, 30);
-
-        btnLimpar.setFont(new java.awt.Font("Clear Sans", 0, 14)); // NOI18N
-        btnLimpar.setText("Limpar");
-        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparActionPerformed(evt);
-            }
-        });
-        btnLimpar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnLimparKeyPressed(evt);
-            }
-        });
-        jPanel1.add(btnLimpar);
-        btnLimpar.setBounds(180, 400, 90, 32);
+        btnConf.setBounds(110, 400, 100, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/lOGIN.png"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -196,19 +149,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfActionPerformed
         verificacaoCredenciais();
-        //new TelaPrincipal().setVisible(true);
-        //dispose();
-
     }//GEN-LAST:event_btnConfActionPerformed
-
-    private void btnLimparKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLimparKeyPressed
-    }//GEN-LAST:event_btnLimparKeyPressed
-
-    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        txtUser.setText("");
-        txtSenha.setText("");
-        txtUser.requestFocus();
-    }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnConfKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnConfKeyPressed
          if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
@@ -259,7 +200,9 @@ public class Login extends javax.swing.JFrame {
 
                     public void windowClosing(WindowEvent e) {
 
-                        int resposta = JOptionPane.showConfirmDialog(null, "Realmente deseja encerrar o programa?", "Confirmar", JOptionPane.YES_NO_OPTION);
+                        int resposta = JOptionPane.showConfirmDialog(null, "Realmente deseja encerrar o programa?",
+                                "Confirmar", JOptionPane.YES_NO_OPTION);
+                        
                         if (resposta == JOptionPane.YES_OPTION) {
                             System.exit(0);
                         } else {
@@ -273,10 +216,50 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConf;
-    private javax.swing.JButton btnLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+
+public void verificacaoCredenciais(){
+        
+    
+    if ((txtUser.getText().equals(utilizadores.get(0))) && (txtSenha.getText().equals(senhas.get(0)))) {
+
+        new TelaPrincipal().setVisible(true);
+        dispose();
+
+    }
+
+    if ((txtUser.getText().equals(utilizadores.get(1))) && (txtSenha.getText().equals(senhas.get(1)))) {
+
+        new TelaPrincipalAdmin().setVisible(true);
+        dispose();
+
+    }
+    
+    for (int i = 0; i < utilizadores.size();i++){
+
+        
+        
+         if (((txtUser.getText().equals(utilizadores.get(i))) && (txtSenha.getText() != senhas.get(i)))){
+            
+             txtSenha.setText("");
+             txtSenha.requestFocus();
+        }
+           
+        
+        else if (((txtUser.getText() != utilizadores.get(i)) && (txtSenha.getText().equals(senhas.get(i))))){
+            txtUser.setText("");
+            txtUser.requestFocus();
+        }
+            
+        else {
+            txtUser.setText("");
+            txtSenha.setText("");
+            txtUser.requestFocus();
+        }
+    }
+    }
 }

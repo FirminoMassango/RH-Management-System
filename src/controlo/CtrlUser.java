@@ -39,17 +39,4 @@ public class CtrlUser {
         }
     }
       
-      public static void main(String[] args) {
-        Utilizadores user = new Utilizadores();
-        CtrlUser dao = new CtrlUser();
-        
-        
-        for (Utilizadores ut: dao.listar("")){
-            user.setUser(ut.getUser());
-        }
-     
-        JOptionPane.showMessageDialog(null,user.getUser());
-        
-    }
-    
 }
